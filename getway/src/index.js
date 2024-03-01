@@ -10,6 +10,7 @@ const startServer = async () => {
 
     app.use("/customer", proxy(process.env.CUSTOMER_URL))
     app.use("/product", proxy(process.env.PRODUCT_URL))
+    app.use("/orders", proxy(process.env.ORDER_URL))
 
     app.listen(port, () => {
         console.log(`Getway Server listening on this port ${port}`)
