@@ -5,7 +5,7 @@ module.exports = (app) => {
     const service = new OrderService()
 
     // * get all orders roures
-    app.get('/', async (req, res, next) => {
+    app.get('/orders', async (req, res, next) => {
         try {
             const fetchOrders = await service.GetOrders()
             if (fetchOrders) {
@@ -34,7 +34,7 @@ module.exports = (app) => {
     })
 
     // * add product and new order for specific customer order router
-    app.post('/add-product', async (req, res, next) => {
+    app.post('/add-order-product', async (req, res, next) => {
         try {
             const { customerId, productId, title, price, qty, company } = req.body
             const newOrder = await service.CreateCustomerOrder(customerId, { _id: productId, title, price, qty, company })
@@ -49,7 +49,7 @@ module.exports = (app) => {
     })
 
     // * remove product for specific customer order router
-    app.delete('/remove-product', async (req, res, next) => {
+    app.delete('/remove-order-product', async (req, res, next) => {
         try {
             const { customerId, orderId } = req.body
             const removeOrder = await service.DeleteCustomerOrder(customerId, orderId)
