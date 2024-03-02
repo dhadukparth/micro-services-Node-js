@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser');
-const { CartRouters, OrderRouters } = require('./api');
+const { CartRouters, OrderRouters, WishlistRouters } = require('./api');
 const { databaseConnection } = require('./database');
 
 module.exports = async (app) => {
@@ -12,4 +12,5 @@ module.exports = async (app) => {
     // * defines all routers
     OrderRouters(app)
     CartRouters(app)
+    WishlistRouters(app)
 }

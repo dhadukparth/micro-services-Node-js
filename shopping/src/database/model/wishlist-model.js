@@ -1,18 +1,11 @@
 const mongoose = require('mongoose')
 
-const OrderSchema = mongoose.Schema({
+const WishlistSchema = mongoose.Schema({
     customerId:{
         type: String
     },
-    date: {
-        type: Number
-    },
     amount: {
         type: Number
-    },
-    status:{
-        type: Boolean,
-        default: false
     },
     items: [
         {
@@ -36,12 +29,9 @@ const OrderSchema = mongoose.Schema({
                     type: String,
                     default: ""
                 }
-            },
-            date: {
-                type: Number
             }
         }
     ]
 })
 
-module.exports = mongoose.model('Orders', OrderSchema)
+module.exports = mongoose.model('wishlist', WishlistSchema)

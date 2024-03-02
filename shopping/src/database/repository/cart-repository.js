@@ -84,7 +84,7 @@ class CartRepository {
             const fetchCustomer = await CartModel.findOne({ customerId: customerId })
             if (fetchCustomer) {
                 const removeNotCart = fetchCustomer.items.filter(item => item._id != orderId)
-                const updateOrderList = await OrdersModel.updateOne({ customerId: customerId }, {
+                const updateOrderList = await CartModel.updateOne({ customerId: customerId }, {
                     items: removeNotCart
                 })
                 if (updateOrderList.modifiedCount === 1) {
